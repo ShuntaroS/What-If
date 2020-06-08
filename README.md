@@ -239,6 +239,33 @@ $$
 
 ## 6.4 Positivity and consistency in causal diagrams
 
+* 表現（counterfactuals or graphs）に関わらず，standardization or IP weightingを用いた因果推論には，exchangeability, positivity, consistencyが必要
+  * これらの条件を保持できないと，解析から得られる数値は適切に解釈できないかもしれない
+  * Chapters 7 and 8でexchangeability conditionをどのようにgraphに書き起こすのか議論する
+  * ここでは，positivityとconsistencyに焦点を当てる
+
+### Positivity
+
+* LからAへの矢印が決定論的ではないか
+* この本では，特に断りが無い限り，positivityは満たされている
+* treatment nodeに入る矢印に関連する
+
+### First component of consistency \(well-defined interventions\)
+
+* 治療Aから結果Yへの矢印が比較的あいまいでない介入に対応するか
+* この本では，well-defined interventionである
+* treatment nodeから放たれる矢印に関連する
+
+### Different status of treatment node
+
+* Treatment nodeは他のnodeと特徴が違う
+* 一つのあわら市方は，Chapter 2で示したcausal trees
+  * これはChapter 5で学習したsufficient causesを表し，background factors Uを含む
+
+
+
+
+
 ## 6.5 A structural classification of bias
 
 ## 6.6 The structure of effect modification
