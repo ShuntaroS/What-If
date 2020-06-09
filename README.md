@@ -261,12 +261,63 @@ $$
 * Treatment nodeは他のnodeと特徴が違う
 * 一つのあわら市方は，Chapter 2で示したcausal trees
   * これはChapter 5で学習したsufficient causesを表し，background factors Uを含む
+* このChapterでは，全ての変数に同じ状態を割り付けているようにみえる
+  * これはnonparametric structural equations model \(Technical Point 6.2\)
+  * これは，いくつかの変数がill-definedのとき，ミスリードかもしれない
+* Causal diagramsでは，複数のversionを持つtreatment nodeは，十分にwell-definedでなければならない
 
+### For example
 
+* Compound treatment Rのcausal effectに興味ある
+  * R = 1は，毎日少なくとも30分の運動をすること
+  * R = 0は，毎日30分未満の運動をすること
+  * 30分以上運動する個人はR = 1と分類され，可能な持続時間30, 31, 32...分のそれぞれはR = 1の異なるversionと見ることができる
+  * A \(r = 1\)はR = 1の30分以上の運動の全ての持続時間を表すことができる
+  * A \(r = 0\)はR = 0の30分未満の運動の全ての持続時間を表すことができる
+  * a\(r\)は，R = rにマッピングできる（情報量を減らせる）
+* Figure 6.10は，compound treatment Rを適切に描写している
+  * RからAの矢印は決定的である
+  * Aは十分に定義されているので，RからYへの直接矢印はない
+  * 興味のあるcompound treatment Rからそのversion A\(r\)を明らかにすることは，causal effectをwell-definedにし，関連するデータを特定し，調整に必要な変数を選択するのに重要なstepである
+
+![](.gitbook/assets/sukurnshotto-2020-06-08-111744png.png)
 
 
 
 ## 6.5 A structural classification of bias
+
+* biasは因果推論する研究者が頻繁に使用する
+  * biasという言葉にはいくつか用法がある（chapter 10）
+  * 無限のサンプルサイズでさえ，causal effectを特定し，計算するのが不十分である時，biasをsystematic biasという
+* 非公式には，我々はしばしばsystematic biasを，関心のある母集団における結果に対する治療の因果関係に由来しない，治療と結果の間の構造的な関連として参照している
+* causal diagramは，さまざまな関連の発生源を表現するのに役立つので，causal diagramを使って，その発生源に応じて系統的バイアスを分類し，バイアスについての議論をより鮮明にすることができる。
+
+### Lack of exchangeability between the treated and the untreated
+
+次の条件のとき，\(unconditional\) biasがあるという
+
+$$
+\Pr(Y^{a=1}=1) - \Pr(Y^{a=0}=1)  \neq \Pr(Y = 1| A=1) - \Pr(Y = 1| A=0)
+$$
+
+このとき，\(unconditional\) exchangeabilityが保持されていないと言う
+
+$$
+Y^a \not\!\perp\!\!\!\perp A
+$$
+
+Chapter 1のconsistent estimator \(Chapter 1.4 p.9\)
+
+$$
+\hat{\Pr}(Y^a = 1) = \Pr(Y^a = 1)
+$$
+
+* unconditional biasが無いということは，集団におけるassociation measure \(e.g., associational risk ratio or difference\)は，effect measure\(e.g., causal risk ratio or difference\)のconsistent estimatorである
+
+#### Bias under the null \(Table 3.1の例\)
+
+* Lack of exchangeabilityは，null hypothesis \(no causal effect of treatment on the outcome\)の場合でもbiasをもたらす
+  * treatmentがoutcomeへのcausal effectを持たなくても，treatmentとoutcomeはデータ内で関連する
 
 ## 6.6 The structure of effect modification
 
