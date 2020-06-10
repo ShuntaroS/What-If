@@ -319,5 +319,124 @@ $$
 * Lack of exchangeabilityは，null hypothesis \(no causal effect of treatment on the outcome\)の場合でもbiasをもたらす
   * treatmentがoutcomeへのcausal effectを持たなくても，treatmentとoutcomeはデータ内で関連する
 
+次の条件のとき，conditional biasがあるという
+
+$$
+\Pr(Y^{a=1}=1 | L = l) - \Pr(Y^{a=0}=1 | L = l)  \neq \Pr(Y = 1| L = l, A=1) - \Pr(Y = 1| L = l,  A=0)
+$$
+
+for at least one stratum l
+
+$$
+Y^a \not\!\perp\!\!\!\perp A | L = l \quad \text{for all} \> a \> \text{and} \> l
+$$
+
+lack of exchangeabilityに複数回言及してきた．しかしそれを生み出す因果構造についてはまだ探求していない．
+
+### Common causas
+
+* 治療とアウトカムが共通原因を持っている時，association measureは一般的にeffect measureと異なる
+* 多くの疫学者は，このバイアスをconfoundingという
+* Chapter 7で扱う
+
+### Conditioning on common effects
+
+* 共通効果を条件づける
+* 多くの疫学者は，このバイアスをselection biasという 
+* Chapter 8で扱う
+
+これら2つのバイアス（bias under the null）は，lack of exchangeabilityにより起こる
+
+* Chapter 9ではmeasurement errorを扱う
+  * これまで，treatment A，outcome Y, covariates Lは完璧に測定されていることを仮定していた
+  * 実際，ある程度の測定エラーは想定される
+  * measurement errorによっておこあるバイアスを，measurement bias or information biasという
+  * いくつかのmeasurement biasも，under the nullの原因である
+* Next three chapterでは，systematic bias \(confounding, selection, measurement\)を扱う
+  * これらのバイアスは，observational studiesでもrandomized experimentsでも起こる
+  * これまでobservational studiesはideal randomized experimentsの不完全な形として説明してきた
+  * ideal randomized experimentsとは，loss-to-follow-upがなく，参加者が割り付けられた処置を完全に遵守し，割り付けられた処置を参加者も研究者も知らない，研究である
+  * これは教育的目的では有益だが，実際のrandomized experimentsはそんなことはない
+
 ## 6.6 The structure of effect modification
+
+Causal diagramはChapter 4で説明したeffect modificationを説明するのにはあまり役立たない
+
+### Figure 6.2の状況を考える
+
+* このとき，associationはcausationである
+
+### Figure 6.11
+
+* 研究者は，各病院の医療の質によって心臓移植の因果関係が異なるのではないかと疑われたため，さらに踏み込んだ
+  * 研究者は高い質（V = 1）と低い質（V = 0）を受けたか個人を分類した
+  * stratified risk differences in each level of Vを計算した
+  * VからAには矢印がない
+    * Aはランダムに割り付けられているから
+
+![](.gitbook/assets/sukurnshotto-2020-06-10-83013png.png)
+
+### Figure 6.11の注意点
+
+#### 1. Figure 6.11は，Vを含まなくても妥当な図である
+
+* なぜなら，VはAとYの共通原因でないから
+* Vのレベルにより因果効果が異なるか？という疑問があるのでVをDAGに含めているだけ
+* Quality of care VからYの経路にある変数もeffect modifierとして適当である
+* 例えば，治療合併症N（Figure 6.12）
+  * これは部分的にVからYを媒介している
+
+![](.gitbook/assets/sukurnshotto-2020-06-10-84302png.png)
+
+#### 2. Figure 6.11はeffect modificationの存在を一意に示すものではない
+
+* effect modificationの3つのタイプを区別できていない
+  * 両方のVにおいて，AのYへのcausal effectは同じ方向
+  * Vごとに，causal effectの方向が反対
+  * あるVではcausal effectがあるが，もう一方ではない
+
+### 上記の例は，effect modifier Vはoutcomeへのcausal effectがあった
+
+* 多くのeffect modifierはcausal effectを持たない
+  * むしろ，それらはアウトカムに因果関係を持つ変数のサロゲートである
+
+#### Figure 6.13
+
+* Aはcost of the treatment
+* AはVの影響を受けるが，Yへの効果はない
+* Sでサブグループ解析しても，effect modificationは見られる
+  * Sはsurrogate effect modifier
+  * Vはcausal effect modifier
+  * 実用では，これらは区別していない
+    * 混乱を避けるために，heterogeneity of causal effectを使う（neutral term）
+* causal effect modifierに言及せず，surrogate effect modifierのみで議論をすすめるとまずい
+
+![](.gitbook/assets/sukurnshotto-2020-06-10-91119png.png)
+
+#### Figure 6.14
+
+* surrogate effect modifierは単にcausal effect modifierと関連があるだけ
+  * Figure 6.13は，シンプルにこれを表している
+* しかし，common cause やconditioning on common effectにより関連があるだけかもしれない
+* Uは，place of residence \(1: Greece, 0: Roma\)
+* Pは，passport-defined nationality \(1: Greece, 0: Roma\)
+* Pは，Uがcommon causeとして働き，Vのsurrogate effect modifierとしてふるまう（関連する）
+
+![](.gitbook/assets/sukurnshotto-2020-06-10-92456png.png)
+
+#### Figure 6.15
+
+* Sは，cost of care
+* Wは，use of bottled mineral water \(rather than tap water\) for drinking at the hospital（院内水として水道水ではなくミネラルウォーターを使っているか）
+* 先進国では，WはSに影響するが，死亡率には影響しない
+* Sで条件づけると，WとVは関連する
+  * ミネラルウォーターを使用している低コスト病院は，死亡率を低下させる医療の構成要素への支出を減らすことで，ミネラルウォーターの余分なコストを相殺する必要があると仮定する．
+
+    そうすると，ミネラルウォーターの使用は，低コスト病院における医療の質と反比例していることになる
+
+  * Wはsurrogate effect modifierとしてふるまう
+
+![](.gitbook/assets/sukurnshotto-2020-06-10-92818png.png)
+
+
 
