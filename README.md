@@ -129,7 +129,7 @@ $$
 
 * AとYは関連するか？
   * ハプロタイプAが喫煙Yになるリスクの効果を持つか研究することになるか想像する
-  * 彼女あは，多くの子供達の遺伝子を決定し，その子どもたちが喫煙者になるかどうかを記録している
+  * 彼女は，多くの子供達の遺伝子を決定し，その子どもたちが喫煙者になるかどうかを記録している
   * ApolloはハプロタイプAを持たない（A=0）
   * 彼は喫煙する（Y=1）可能性が高いか低いか？
   * ハプロタイプAを持とうが持たないがYのリスクは同じなので，ハプロタイプAはYを予測する能力を向上させない
@@ -259,7 +259,7 @@ $$
 ### Different status of treatment node
 
 * Treatment nodeは他のnodeと特徴が違う
-* 一つのあわら市方は，Chapter 2で示したcausal trees
+* 一つのあわらし方は，Chapter 2で示したcausal trees
   * これはChapter 5で学習したsufficient causesを表し，background factors Uを含む
 * このChapterでは，全ての変数に同じ状態を割り付けているようにみえる
   * これはnonparametric structural equations model \(Technical Point 6.2\)
@@ -402,8 +402,8 @@ Causal diagramはChapter 4で説明したeffect modificationを説明するの�
 
 #### Figure 6.13
 
-* Aはcost of the treatment
-* AはVの影響を受けるが，Yへの効果はない
+* Sはcost of the treatment
+* SはVの影響を受けるが，Yへの効果はない
 * Sでサブグループ解析しても，effect modificationは見られる
   * Sはsurrogate effect modifier
   * Vはcausal effect modifier
